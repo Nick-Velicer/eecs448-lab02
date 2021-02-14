@@ -111,19 +111,23 @@ bool LinkedList<T>::removeBack()
 	Node<T>* lastNode = nullptr;
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
+	//checking if the list is already empty
 	if (m_size == 0) {
 		isRemoved = false;
 	}
+	//if the list is size 1, delete the front
 	else if (m_size == 1) {
 		delete m_front;
 		m_size = 0;
 		isRemoved = true;
 	}
+	//if the list is size 2, delete the second element
 	else if (m_size == 2) {
 		delete m_front->getNext();
 		m_size = 1;
 		isRemoved = true;
 	}
+	//if the list is size 3+, iterate through and find the second to last node, then delete the last one
 	else {
 		secondintoLast = m_front;
 		for (int i = 0; i < (m_size-1); i++) {
